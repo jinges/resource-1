@@ -2,7 +2,7 @@
  * @Author: 大明冯 
  * @Date: 2018-05-16 15:24:21 
  * @Last Modified by: 大明冯
- * @Last Modified time: 2018-05-21 10:13:46
+ * @Last Modified time: 2018-05-21 12:10:24
  */
 
 import { questionAttribute } from './../../model/resource/db';
@@ -18,7 +18,6 @@ class QuestionController{
     } else {
       res = await questionService.createQuestion(obj);
     }
-    console.log(res)
     ctx.success(ctx)
   }
 
