@@ -53,6 +53,6 @@ module.exports = function(sequelize: sequelize.Sequelize, DataTypes: DataTypes) 
 		}
 	}, {
 		tableName: 'point',
-		timestamps: true
+		timestamps: false
 	});
 };

@@ -30,6 +30,6 @@ module.exports = function(sequelize: sequelize.Sequelize, DataTypes: DataTypes) 
 		}
 	}, {
 		tableName: 'options',
-		timestamps: true
+		timestamps: false
 	});
 };

@@ -20,6 +20,6 @@ module.exports = function(sequelize: sequelize.Sequelize, DataTypes: DataTypes) 
 		}
 	}, {
 		tableName: 'subject_type',
-		timestamps: true
+		timestamps: false
 	});
 };

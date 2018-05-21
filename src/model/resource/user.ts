@@ -51,6 +51,6 @@ module.exports = function(sequelize: sequelize.Sequelize, DataTypes: DataTypes) 
 		}
 	}, {
 		tableName: 'user',
-		timestamps: true
+		timestamps: false
 	});
 };

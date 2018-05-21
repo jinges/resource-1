@@ -39,6 +39,6 @@ module.exports = function(sequelize: sequelize.Sequelize, DataTypes: DataTypes) 
 		}
 	}, {
 		tableName: 'question',
-		timestamps: true
+		timestamps: false
 	});
 };
