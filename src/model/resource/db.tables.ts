@@ -7,8 +7,8 @@ export interface ITables {
 	options:def.optionsModel;
 	point:def.pointModel;
 	question:def.questionModel;
-	user:def.userModel;
 	subjectType:def.subjectTypeModel;
+	user:def.userModel;
 }
 
 export const getModels = function(seq:sequelize.Sequelize):ITables {
@@ -16,8 +16,8 @@ export const getModels = function(seq:sequelize.Sequelize):ITables {
 		options: seq.import(path.join(__dirname, './options')),
 		point: seq.import(path.join(__dirname, './point')),
 		question: seq.import(path.join(__dirname, './question')),
-		user: seq.import(path.join(__dirname, './user')),
 		subjectType: seq.import(path.join(__dirname, './subject_type')),
+		user: seq.import(path.join(__dirname, './user')),
 	};
 	return tables;
 };

@@ -7,9 +7,10 @@ import {questionInstance, questionAttribute} from './db';
 module.exports = function(sequelize: sequelize.Sequelize, DataTypes: DataTypes) {
 	return sequelize.define<questionInstance, questionAttribute>('question', {
 		questionId: {
-			type: DataTypes.INTEGER(20),
+			type: DataTypes.BIGINT,
 			allowNull: false,
 			primaryKey: true,
+			autoIncrement: true,
 			field: 'questionID'
 		},
 		questionTags: {

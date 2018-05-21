@@ -29,15 +29,23 @@ export interface pointModel extends Sequelize.Model<pointInstance, pointAttribut
 
 // table: question
 export interface questionAttribute {
-	questionId?:number;
+	questionId:number;
 	questionTags:string;
 	pointId:number;
-	createDate?:Date;
+	createDate:Date;
 	qType:number;
 	answer:string;
 }
 export interface questionInstance extends Sequelize.Instance<questionAttribute>, questionAttribute { }
 export interface questionModel extends Sequelize.Model<questionInstance, questionAttribute> { }
+
+// table: subjectType
+export interface subjectTypeAttribute {
+	id:number;
+	name:string;
+}
+export interface subjectTypeInstance extends Sequelize.Instance<subjectTypeAttribute>, subjectTypeAttribute { }
+export interface subjectTypeModel extends Sequelize.Model<subjectTypeInstance, subjectTypeAttribute> { }
 
 // table: user
 export interface userAttribute {
@@ -52,11 +60,3 @@ export interface userAttribute {
 }
 export interface userInstance extends Sequelize.Instance<userAttribute>, userAttribute { }
 export interface userModel extends Sequelize.Model<userInstance, userAttribute> { }
-
-// table: subjectType
-export interface subjectTypeAttribute {
-	id:number;
-	name:string;
-}
-export interface subjectTypeInstance extends Sequelize.Instance<subjectTypeAttribute>, subjectTypeAttribute { }
-export interface subjectTypeModel extends Sequelize.Model<subjectTypeInstance, subjectTypeAttribute> { }
