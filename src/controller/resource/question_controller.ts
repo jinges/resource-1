@@ -38,7 +38,6 @@ class QuestionController{
           break;
       }
       let pointList=await questionService.getPointByLevel(level,parentId);
-  
       return parentId;
     }
 }
