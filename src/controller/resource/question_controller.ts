@@ -7,11 +7,12 @@
 
 import { questionAttribute } from './../../model/resource/db';
 import { questionService } from './../../service';
+import { getNewPontId } from '../../common/util';
 
-class QuestionController{
-  async editQuestion(ctx: any){
+class QuestionController {
+  async editQuestion(ctx: any) {
     const obj = ctx.request.body;
-    let res:any;
+    let res: any;
     console.log(obj)
     if (obj.questionId) {
       res = await questionService.updateQuestion(obj.questionId, obj)
@@ -21,24 +22,36 @@ class QuestionController{
     ctx.success(ctx)
   }
 
-    //根据级别创建知识的ID
-    async strPointCode(level:number,pointCode1?:string,pointCode2?:string) {
-      const parentId='';
-      switch(level)
-      {
-        case 1:
-          parentId =='';
-          break;
-        case 2:
-          parentId == pointCode1;
-          break;
-        case 3:
-          parentId == pointCode2;
-          break;
-      }
-      let pointList=await questionService.getPointByLevel(level,parentId);
-      return parentId;
-    }
+  async strPoint(ctx: any) {
+    const { level, pointCode1, pointCode2 } = ctx.query;
+    const res = await strPointCode(level * 1, pointCode1, pointCode2);
+    ctx.success(res);
+  }
+
+
+}
+
+//根据级别创建知识的ID
+async function strPointCode(level: number, pointCode1: string, pointCode2: string) {
+  let parentId = '';
+  switch (level) {
+    case 1:
+      parentId = '';
+      break;
+    case 2:
+      parentId = pointCode1;
+      break;
+    case 3:
+      parentId = pointCode2;
+      break;
+  }
+  console.log('par',parentId);
+  const maxPoint = await questionService.getPointByLevel(level, parentId);
+  console.log('-----',maxPoint.pointID);
+  let id = maxPoint.pointID;
+  const pId = getNewPontId(id == null ? 0 : id, parentId, level);
+  console.log(pId);
+  return pId;
 }
 
 export default new QuestionController()

@@ -13,5 +13,6 @@ const router = new Router()
 
 router.prefix('/question')
   .post('/edit', questionController.editQuestion)
+  .get('/pointId',questionController.strPoint)
 
 export default router

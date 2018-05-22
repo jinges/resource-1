@@ -30,7 +30,7 @@ const api = {
 }
 
 export default {
-  port: 80,
+  port: 8080,
   secret: 'wechat_secret',
   db,
   api
