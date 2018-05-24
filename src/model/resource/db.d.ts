@@ -4,7 +4,7 @@ import * as Sequelize from 'sequelize';
 
 // table: options
 export interface optionsAttribute {
-	optionId:number;
+	optionId?:number;
 	questionId:number;
 	value:string;
 	isAnswer:boolean;
@@ -49,7 +49,7 @@ export interface subjectTypeModel extends Sequelize.Model<subjectTypeInstance, s
 
 // table: user
 export interface userAttribute {
-	userId:number;
+	userId?:number;
 	openId:string;
 	nickName:string;
 	avatarUrl:string;

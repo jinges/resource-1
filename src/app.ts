@@ -1,12 +1,12 @@
 /*
  * @Author: 大明冯 
  * @Date: 2018-01-11 10:21:43 
- * @Last Modified by:   大明冯 
- * @Last Modified time: 2018-01-11 10:21:43 
+ * @Last Modified by: 大明冯
+ * @Last Modified time: 2018-05-24 10:38:34
  */
 
 import * as Koa from 'koa'
-import config from './config'
+import config from './config/index'
 import router from './routes'
 import middleware from './middleware'
 
