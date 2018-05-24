@@ -7,5 +7,6 @@
 
 import QuestionController from './resource/question_controller';
 import OptionController from './resource/option_controller';
+import PointController from './resource/point_controller';
 
-export {QuestionController, OptionController}
+export { QuestionController, OptionController, PointController }

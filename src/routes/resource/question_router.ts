@@ -7,12 +7,12 @@
 
 
 const Router = require('koa-router')
-import { QuestionController } from './../../controller'
+import { QuestionController,PointController } from './../../controller'
 
 const router = new Router()
 
 router.prefix('/question')
   .post('/edit', QuestionController.editQuestion)
-  .get('/pointId',QuestionController.strPoint)
+  .get('/pointId',PointController)
 
 export default router

@@ -7,5 +7,6 @@
 
 import questionService from './resource/question_service';
 import optionService from './resource/options_service';
+import pointService from './resource/point_service';
 
-export { questionService, optionService}
+export { questionService, optionService, pointService }
