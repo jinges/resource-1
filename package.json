@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon build/app.js",
-    "dev": "npm run build & npm run start",
+    "start": "nodemon ./build/app.js",
+    "dev": "concurrently \"npm run build\" \" npm run start\"",
     "build": "npm run clear & tsc",
     "clear": "rimraf build",
     "model": "rimraf src/model/resource & sequelize-auto -o \"./src/model/resource\" -c \"create_model.json\" -d resourse_test  -h 192.168.1.49 -u root -p 3306 -x root -e mysql -C -z"
