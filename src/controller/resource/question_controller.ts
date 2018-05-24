@@ -45,12 +45,21 @@ async function strPointCode(level: number, pointCode1: string, pointCode2: strin
       parentId = pointCode2;
       break;
   }
-  console.log('par',parentId);
+  console.log('par', parentId);
   const maxPoint = await questionService.getPointByLevel(level, parentId);
-  console.log('-----',maxPoint.pointID);
-  let id = maxPoint.pointID;
-  const pId = getNewPontId(id == null ? 0 : id, parentId, level);
-  console.log(pId);
+  let id = maxPoint ? maxPoint.pointID : 0;
+  let pId = getNewPontId(id == null ? 0 : id, parentId, level);
+  switch (level) {
+    case 1:
+      pId = pId;
+      break;
+    case 2:
+      pId = pointCode1 + pId;
+      break;
+    case 3:
+      pId = pointCode1 + pointCode2 + pId;
+      break;
+  }
   return pId;
 }
 

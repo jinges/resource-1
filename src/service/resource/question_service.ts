@@ -32,6 +32,7 @@ class Question {
     sql = `SELECT pointID FROM point ${WHERE} AND Level=${level} ORDER BY createDate DESC LIMIT 1`;
     return await sequelize.query(sql, {
       plain: true,
+      raw:true,
       type: Sequelize.QueryTypes.SELECT
     })
   }

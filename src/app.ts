@@ -4,7 +4,7 @@
  * @Last Modified by:   大明冯 
  * @Last Modified time: 2018-01-11 10:21:43 
  */
-
+import 'source-map-support/register';
 import * as Koa from 'koa'
 import config from './config'
 import router from './routes'
