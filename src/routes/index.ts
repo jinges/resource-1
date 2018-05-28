@@ -7,8 +7,9 @@
 
 import question from './resource/question_router'
 import option from './resource/option_router'
+import point from './resource/point_router'
 
-const routes: Array<Object> = [question, option]
+const routes: Array<Object> = [question, option, point]
 
 export default ((app: any) => {
   routes.forEach((route: any) => {

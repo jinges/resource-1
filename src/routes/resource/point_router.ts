@@ -4,6 +4,6 @@ import { PointController } from './../../controller'
 const router = new Router()
 
 router.prefix('/point')
-    .get('/pointId', PointController)
+    .post('/add', PointController.addPoint)
 
 export default router
