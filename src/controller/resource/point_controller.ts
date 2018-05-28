@@ -1,11 +1,11 @@
 import { getNewPontId } from '../../common/util';
 import { pointService } from './../../service';
+import { Context } from 'koa';
 
 class PointController {
-    async strPoint(ctx: any) {
-        const { level, pointCode1, pointCode2 } = ctx.query;
-        const res = await strPointCode(level * 1, pointCode1, pointCode2);
-        ctx.success(res);
+    async addPoint(ctx: any) {
+        const data = await addPoint(ctx);
+        ctx.success(data);
     }
 }
 
@@ -40,5 +40,20 @@ async function strPointCode(level: number, pointCode1: string, pointCode2: strin
             break;
     }
     return pId;
+}
+
+async function addPoint(ctx: Context) {
+    const { pointName, periodID, curriculumID, pointCode1, pointCode2, pointCode3, level } = ctx.params;
+    let condition: any = {
+        pointID: strPointCode(level * 1, pointCode1, pointCode2),
+        pointName,
+        periodID,
+        curriculumID,
+        pointCode1,
+        pointCode2,
+        level,
+        createDate: new Date
+    };
+    pointService.setPoint(condition);
 }
 export default new PointController()
