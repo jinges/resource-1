@@ -3,7 +3,7 @@ import { stringify } from "qs";
 import * as _ from "lodash";
 
 /**
- * 
+ * 生成新知识点Code
  * @param list 知识点ID列表
  * @param parentId 父级ID
  * @param level 级别
