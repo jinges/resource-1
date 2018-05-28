@@ -2,7 +2,7 @@
  * @Author: 大明冯 
  * @Date: 2017-12-14 09:27:56 
  * @Last Modified by: 大明冯
- * @Last Modified time: 2018-01-16 14:09:38
+ * @Last Modified time: 2018-05-24 14:42:23
  */
 
 const db = {
@@ -30,7 +30,7 @@ const api = {
 }
 
 export default {
-  port: 8080,
+  port: 80,
   secret: 'wechat_secret',
   db,
   api

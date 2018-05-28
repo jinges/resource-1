@@ -2,11 +2,11 @@
  * @Author: 大明冯 
  * @Date: 2018-05-16 15:24:21 
  * @Last Modified by: 大明冯
- * @Last Modified time: 2018-05-21 12:10:24
+ * @Last Modified time: 2018-05-24 14:33:20
  */
 
 import { questionAttribute } from './../../model/resource/db';
-import { questionService } from './../../service';
+import { QuestionService } from './../../service';
 import { getNewPontId } from '../../common/util';
 
 class QuestionController {
@@ -15,9 +15,9 @@ class QuestionController {
     let res: any;
     console.log(obj)
     if (obj.questionId) {
-      res = await questionService.updateQuestion(obj.questionId, obj)
+      res = await QuestionService.updateQuestion(obj.questionId, obj)
     } else {
-      res = await questionService.createQuestion(obj);
+      res = await QuestionService.createQuestion(obj);
     }
     ctx.success(ctx)
   }
@@ -27,8 +27,6 @@ class QuestionController {
     const res = await strPointCode(level * 1, pointCode1, pointCode2);
     ctx.success(res);
   }
-
-
 }
 
 //根据级别创建知识的ID
@@ -46,7 +44,7 @@ async function strPointCode(level: number, pointCode1: string, pointCode2: strin
       break;
   }
   console.log('par', parentId);
-  const maxPoint = await questionService.getPointByLevel(level, parentId);
+  const maxPoint = await QuestionService.getPointByLevel(level, parentId);
   let id = maxPoint ? maxPoint.pointID : 0;
   let pId = getNewPontId(id == null ? 0 : id, parentId, level);
   switch (level) {

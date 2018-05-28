@@ -41,7 +41,7 @@ export interface questionModel extends Sequelize.Model<questionInstance, questio
 
 // table: subjectType
 export interface subjectTypeAttribute {
-	id:number;
+	id?:number;
 	name:string;
 }
 export interface subjectTypeInstance extends Sequelize.Instance<subjectTypeAttribute>, subjectTypeAttribute { }
