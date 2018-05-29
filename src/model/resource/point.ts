@@ -9,6 +9,7 @@ module.exports = function(sequelize: sequelize.Sequelize, DataTypes: DataTypes) 
 		pointId: {
 			type: DataTypes.STRING(50),
 			allowNull: false,
+			primaryKey: true,
 			field: 'pointID'
 		},
 		pointName: {

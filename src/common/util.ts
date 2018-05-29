@@ -8,8 +8,8 @@ import * as _ from "lodash";
  * @param parentId 父级ID
  * @param level 级别
  */
-export function getNewPontId(maxPointId: number, parentId: string, level: number) {
-  maxPointId = parseInt(maxPointId.toString()) + 1 || 1;
+export function getNewPontId(maxPointId: number, level: number) {
+  maxPointId = parseInt(maxPointId.toString().substr(-3)) + 1 || 1;
   try {
     let newId = '';
     switch (level) {
@@ -17,12 +17,7 @@ export function getNewPontId(maxPointId: number, parentId: string, level: number
         newId = _.padStart(maxPointId.toString(), 4, '0');
         break;
       case 2:
-      case 3:
         newId = _.padStart(maxPointId.toString(), 3, '0');
-        break;
-      case 4:
-      case 5:
-        newId = _.padStart(maxPointId.toString(), 2, '0');
         break;
     }
     return newId;
