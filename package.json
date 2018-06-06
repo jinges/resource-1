@@ -13,7 +13,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/lodash": "^4.14.109",
     "axios": "^0.17.1",
     "js-sha1": "^0.6.0",
     "jsonwebtoken": "^8.1.0",
@@ -37,6 +36,7 @@
     "@types/koa-bodyparser": "^3.0.26",
     "@types/koa-logger": "^3.1.0",
     "@types/koa-router": "^7.0.27",
+    "@types/lodash": "^4.14.109",
     "@types/node": "^8.0.56",
     "@types/qs": "^6.5.1",
     "@types/sequelize": "^4.0.79",

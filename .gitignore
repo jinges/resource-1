@@ -5,3 +5,9 @@
 /node_modules
 
 package-lock.json
+
+
+# web
+/web/node_modules
+
+/web/package-lock.json
