@@ -2,26 +2,38 @@
  * @Author: 大明冯 
  * @Date: 2018-05-16 15:24:21 
  * @Last Modified by: 大明冯
- * @Last Modified time: 2018-06-06 15:53:42
+ * @Last Modified time: 2018-06-11 18:44:49
  */
-
+import { sequelize } from './../../model'
 import { questionAttribute } from './../../model/resource/db';
-import { QuestionService } from './../../service';
+import { QuestionService, OptionService } from './../../service';
 import { getNewPontId } from '../../common/util';
-
-import { OptionService } from "./../../service";
+import { Transaction } from 'sequelize';
 
 class QuestionController {
   async editQuestion(ctx: any) {
     const obj = ctx.request.body;
-    let res: any;
+    const res = await sequelize.transaction( (t: Transaction) => {
+      let questionTask: any;
+      if (obj.questionId) {
+        questionTask = QuestionService.updateQuestion(obj.questionId, obj, t)
+      } else {
+        questionTask = QuestionService.createQuestion(obj, t);
+      }
+      return questionTask.then((question: any) => {
+        let res: any
+        for (let item of obj.answers) {
+          item.questionId = question[0].questionId
+          res = OptionService.editOption(item, t)
+        }
+        return res
+      }).catch((err: any) => {
+        t.rollback()
+        throw new Error();
+      })
+    })
 
-    if (obj.questionId) {
-      res = await QuestionService.updateQuestion(obj.questionId, obj)
-    } else {
-      res = await QuestionService.createQuestion(obj);
-    }
-    ctx.success(ctx)
+    ctx.success(res)
   }
 
   async selectQuestion(ctx: any) {

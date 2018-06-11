@@ -23,7 +23,7 @@ class PointController {
   }
 
   async selectPoint(ctx: any) {
-    const { pageIndex, pageSize, level, pointName, periodId, curriculumId} = ctx.query;
+    let { pageIndex, pageSize, level, pointName, periodId, curriculumId} = ctx.query;
     let params = 'WHERE';
     if(level){
       params += ` level = ${level}    AND`
@@ -38,8 +38,17 @@ class PointController {
       params += ` curriculumId = ${curriculumId}    AND`
     }
     params = params.substr(0, params.length - 5)
+    const count = await PointService.pointCount(params).then(res => {
+      if (res.length) {
+        return res[0].count
+      }
+      return 0
+    });
+    if (!params.length && !pageSize) {
+      pageSize = count;
+    }
     const rows = await PointService.selectPoint(params, pageIndex, pageSize)
-    ctx.success({rows})
+    ctx.success({rows, count})
   }
 }
 

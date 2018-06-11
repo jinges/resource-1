@@ -30,6 +30,12 @@ class point {
     return await model.point.create(point);
   }
 
+  /**
+   * 根据条件查询记录
+   * @param params 
+   * @param pageIndex 
+   * @param pageSize 
+   */
   async selectPoint(params: any, pageIndex: number = 1, pageSize: number = 10) {
     return await sequelize.query(`SELECT * FROM point
       ${params}
@@ -37,6 +43,18 @@ class point {
       LIMIT ${(pageIndex - 1) * pageSize}, ${pageSize}`,
       {
          type: sequelize.QueryTypes.SELECT
+      })
+  }
+  
+  /**
+   * 根据条件查询记录总条数
+   * @param params 
+   */
+  async pointCount(params: any) {
+    return await sequelize.query(`SELECT COUNT(pointId) AS count FROM point
+      ${params}`,
+      {
+        type: sequelize.QueryTypes.SELECT
       })
   }
 }

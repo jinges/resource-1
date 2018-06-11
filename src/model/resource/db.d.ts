@@ -7,20 +7,19 @@ export interface optionsAttribute {
 	optionId?:number;
 	questionId:number;
 	value:string;
-	isAnswer:boolean;
+	isAnswer:number;
 }
 export interface optionsInstance extends Sequelize.Instance<optionsAttribute>, optionsAttribute { }
 export interface optionsModel extends Sequelize.Model<optionsInstance, optionsAttribute> { }
 
 // table: point
 export interface pointAttribute {
-	pointId?:string;
-	pointName?:any;
+	pointId:string;
+	pointName:string;
 	periodId:number;
 	curriculumId:number;
-	pointCode1?:string;
+	pointCode1:string;
 	pointCode2?:string;
-	pointCode3?:string;
 	level:number;
 	createDate:Date;
 }
@@ -29,10 +28,10 @@ export interface pointModel extends Sequelize.Model<pointInstance, pointAttribut
 
 // table: question
 export interface questionAttribute {
-	questionId:number;
+	questionId?:number;
 	questionTags:string;
 	pointId:number;
-	createDate:Date;
+	createDate?:Date;
 	qType:number;
 	answer:string;
 }

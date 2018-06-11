@@ -9,38 +9,32 @@ module.exports = function(sequelize: sequelize.Sequelize, DataTypes: DataTypes) 
 		pointId: {
 			type: DataTypes.STRING(50),
 			allowNull: false,
-			primaryKey: true,
-			field: 'pointID'
+			field: 'pointId'
 		},
 		pointName: {
-			type: "VARBINARY(100)",
-			allowNull: true,
+			type: DataTypes.STRING(100),
+			allowNull: false,
 			field: 'pointName'
 		},
 		periodId: {
 			type: DataTypes.INTEGER(11),
 			allowNull: false,
-			field: 'periodID'
+			field: 'periodId'
 		},
 		curriculumId: {
 			type: DataTypes.INTEGER(11),
 			allowNull: false,
-			field: 'curriculumID'
+			field: 'curriculumId'
 		},
 		pointCode1: {
 			type: DataTypes.STRING(200),
-			allowNull: true,
+			allowNull: false,
 			field: 'pointCode1'
 		},
 		pointCode2: {
 			type: DataTypes.STRING(200),
 			allowNull: true,
 			field: 'pointCode2'
-		},
-		pointCode3: {
-			type: DataTypes.STRING(200),
-			allowNull: true,
-			field: 'pointCode3'
 		},
 		level: {
 			type: DataTypes.INTEGER(4),

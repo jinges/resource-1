@@ -25,7 +25,8 @@ module.exports = function(sequelize: sequelize.Sequelize, DataTypes: DataTypes) 
 		},
 		createDate: {
 			type: DataTypes.DATE,
-			allowNull: false,
+			allowNull: true,
+			defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
 			field: 'createDate'
 		},
 		qType: {

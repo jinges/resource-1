@@ -24,7 +24,7 @@ module.exports = function(sequelize: sequelize.Sequelize, DataTypes: DataTypes) 
 			field: 'value'
 		},
 		isAnswer: {
-			type: DataTypes.BOOLEAN,
+			type: DataTypes.INTEGER(1),
 			allowNull: false,
 			field: 'isAnswer'
 		}

@@ -2,20 +2,28 @@
  * @Author: 大明冯 
  * @Date: 2018-05-16 15:09:45 
  * @Last Modified by: 大明冯
- * @Last Modified time: 2018-06-06 15:45:14
+ * @Last Modified time: 2018-06-11 17:19:05
  */
 
 import { sequelize, model, Op, Sequelize } from './../../model';
 import { questionAttribute, pointAttribute } from './../../model/resource/db';
+import { Transaction } from 'sequelize';
 
 class Question {
-  async createQuestion(obj: questionAttribute) {
-    console.log(obj)
-    return model.question.findOrCreate({ where: { questionTags: obj.questionTags }, defaults: obj })
+  async createQuestion(obj: questionAttribute, t?: Transaction) {
+    let params = { where: { questionTags: obj.questionTags }, defaults: obj}
+    if(t) {
+      Object.assign(params, {transaction: t })
+    }
+    return model.question.findOrCreate(params)
   }
 
-  async updateQuestion(questionId: number, obj: questionAttribute) {
-    return model.question.update(obj, { where: { questionId } });
+  async updateQuestion(questionId: number, obj: questionAttribute, t?: Transaction) {
+    let params = { where: { questionId }}
+    if (t) {
+      Object.assign(params, { transaction: t })
+    }
+    return model.question.update(obj, params);
   }
 
   async selectQuestion(params: any, pageIndex: number = 1, pageSize: number = 10) {
