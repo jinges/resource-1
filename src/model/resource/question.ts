@@ -11,7 +11,7 @@ module.exports = function(sequelize: sequelize.Sequelize, DataTypes: DataTypes) 
 			allowNull: false,
 			primaryKey: true,
 			autoIncrement: true,
-			field: 'questionID'
+			field: 'questionId'
 		},
 		questionTags: {
 			type: DataTypes.STRING(200),
@@ -21,7 +21,7 @@ module.exports = function(sequelize: sequelize.Sequelize, DataTypes: DataTypes) 
 		pointId: {
 			type: DataTypes.INTEGER(11),
 			allowNull: false,
-			field: 'pointID'
+			field: 'pointId'
 		},
 		createDate: {
 			type: DataTypes.DATE,

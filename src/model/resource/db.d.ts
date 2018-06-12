@@ -14,7 +14,7 @@ export interface optionsModel extends Sequelize.Model<optionsInstance, optionsAt
 
 // table: point
 export interface pointAttribute {
-	pointId:string;
+	pointId?:string;
 	pointName:string;
 	periodId:number;
 	curriculumId:number;

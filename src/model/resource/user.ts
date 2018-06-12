@@ -11,13 +11,13 @@ module.exports = function(sequelize: sequelize.Sequelize, DataTypes: DataTypes) 
 			allowNull: false,
 			primaryKey: true,
 			autoIncrement: true,
-			field: 'userID'
+			field: 'userId'
 		},
 		openId: {
 			type: DataTypes.STRING(200),
 			allowNull: false,
 			unique: true,
-			field: 'openID'
+			field: 'openId'
 		},
 		nickName: {
 			type: DataTypes.STRING(50),

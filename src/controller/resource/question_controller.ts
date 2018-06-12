@@ -2,7 +2,7 @@
  * @Author: 大明冯 
  * @Date: 2018-05-16 15:24:21 
  * @Last Modified by: 大明冯
- * @Last Modified time: 2018-06-11 18:44:49
+ * @Last Modified time: 2018-06-12 22:30:31
  */
 import { sequelize } from './../../model'
 import { questionAttribute } from './../../model/resource/db';
@@ -21,13 +21,15 @@ class QuestionController {
         questionTask = QuestionService.createQuestion(obj, t);
       }
       return questionTask.then((question: any) => {
-        let res: any
+        let res: any;
+        const questionRes = question[0] || question[0].dataValues;
         for (let item of obj.answers) {
-          item.questionId = question[0].questionId
+          item.questionId = questionRes.questionId || obj.questionId
           res = OptionService.editOption(item, t)
         }
         return res
       }).catch((err: any) => {
+        console.log(err.message)
         t.rollback()
         throw new Error();
       })
@@ -41,7 +43,7 @@ class QuestionController {
     let params = 'WHERE';
 
     if(pointId) {
-      params += ` q.pointID = ${pointId}   AND`
+      params += ` q.pointId = ${pointId}   AND`
     }
     if(subjectId) {
       params += ` q.qType = ${subjectId}   AND`
@@ -57,7 +59,7 @@ class QuestionController {
     const rows = await QuestionService.selectQuestion(params, pageIndex, pageSize);
     if(rows.length) {
       for(let item of rows) {
-        const questionId = item.questionID;
+        const questionId = item.questionId;
         const answers = await OptionService.findOptions(questionId);
         item.answers = answers;
       }

@@ -12,9 +12,9 @@ class point {
     let sql = '';
     let WHERE = ' WHERE 1=1 ';
     if (level > 1) {
-      WHERE += `AND pointID LIKE '${parentId}%'`;
+      WHERE += `AND pointId LIKE '${parentId}%'`;
     }
-    sql = `SELECT pointID FROM point ${WHERE} AND Level=${level} ORDER BY createDate DESC LIMIT 1`;
+    sql = `SELECT pointId FROM point ${WHERE} AND Level=${level} ORDER BY createDate DESC LIMIT 1`;
     return await sequelize.query(sql, {
       plain: true,
       raw: true,

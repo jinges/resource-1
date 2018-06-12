@@ -11,12 +11,12 @@ module.exports = function(sequelize: sequelize.Sequelize, DataTypes: DataTypes) 
 			allowNull: false,
 			primaryKey: true,
 			autoIncrement: true,
-			field: 'optionID'
+			field: 'optionId'
 		},
 		questionId: {
 			type: DataTypes.BIGINT,
 			allowNull: false,
-			field: 'questionID'
+			field: 'questionId'
 		},
 		value: {
 			type: DataTypes.TEXT,
