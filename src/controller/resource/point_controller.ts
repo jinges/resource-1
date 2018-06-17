@@ -6,7 +6,6 @@ class PointController {
   async addPoint(ctx: any) {
     const { pointName, periodId, curriculumId, pointCode1, level } = ctx.request.body;
     const intlevel = level * 1;
-    console.log(typeof (intlevel));
     const pId = await strPointCode(intlevel, pointCode1);
     let condition: any = {
       pointId: pId,
@@ -18,8 +17,14 @@ class PointController {
       level,
       createDate: new Date
     };
-    const res = await PointService.setPoint(condition);
+    const res = await PointService.addPoint(condition);
     ctx.success(res);
+  }
+
+  async updatePoint(ctx: any) {
+    const obj = ctx.request.body;
+    const res = await PointService.updatePoint(obj, obj.pointId)
+    ctx.success(res)
   }
 
   async selectPoint(ctx: any) {
@@ -63,9 +68,8 @@ async function strPointCode(level: number, pointCode1: string) {
       parentId = pointCode1;
       break;
   }
-  console.log('par', parentId);
   const maxPoint = await PointService.getPointByLevel(level, parentId);
-  let id = maxPoint ? maxPoint.pointID : 0;
+  let id = maxPoint ? maxPoint.pointId : 0;
   let pId = getNewPontId(id, level);
   //根据级别返回完整知识点ID
   switch (level) {

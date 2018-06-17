@@ -9,16 +9,16 @@ class point {
    * @param parentId 父级ID
    */
   async getPointByLevel(level: number, parentId: string) {
-    let sql = '';
-    let WHERE = ' WHERE 1=1 ';
+    let params = `WHERE level = ${level}   AND`;
     if (level > 1) {
-      WHERE += `AND pointId LIKE '${parentId}%'`;
+      params += ` pointId LIKE '${parentId}%'   AND`
     }
-    sql = `SELECT pointId FROM point ${WHERE} AND Level=${level} ORDER BY createDate DESC LIMIT 1`;
-    return await sequelize.query(sql, {
+    
+    params = params.substr(0, params.length - 5)
+    return await sequelize.query(`SELECT pointId FROM point ${params} ORDER BY createDate DESC LIMIT 1 `, {
+      type: sequelize.QueryTypes.SELECT,
       plain: true,
       raw: true,
-      type: Sequelize.QueryTypes.SELECT
     })
   }
 
@@ -26,8 +26,12 @@ class point {
    * 添加知识点
    * @param point 
    */
-  async setPoint(point: pointAttribute) {
+  async addPoint(point: pointAttribute) {
     return await model.point.create(point);
+  }
+
+  async updatePoint(point: pointAttribute, pointId: string) {
+    return await model.point.update(point, {where: {pointId}})
   }
 
   /**

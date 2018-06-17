@@ -1,14 +1,15 @@
 /* jshint indent: 1 */
 // tslint:disable
 import * as sequelize from 'sequelize';
-import {DataTypes} from 'sequelize';
-import {pointInstance, pointAttribute} from './db';
+import { DataTypes } from 'sequelize';
+import { pointInstance, pointAttribute } from './db';
 
-module.exports = function(sequelize: sequelize.Sequelize, DataTypes: DataTypes) {
+module.exports = function (sequelize: sequelize.Sequelize, DataTypes: DataTypes) {
 	return sequelize.define<pointInstance, pointAttribute>('point', {
 		pointId: {
 			type: DataTypes.STRING(50),
 			allowNull: false,
+			primaryKey: true,
 			field: 'pointId'
 		},
 		pointName: {
@@ -46,8 +47,10 @@ module.exports = function(sequelize: sequelize.Sequelize, DataTypes: DataTypes) 
 			allowNull: false,
 			field: 'createDate'
 		}
-	}, {
+	},
+	{
 		tableName: 'point',
+		freezeTableName: true,
 		timestamps: false
 	});
 };
