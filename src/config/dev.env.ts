@@ -10,7 +10,7 @@ const db = {
   username: 'root',
   password: 'root',
   dbCongig: {
-    host: '192.168.1.49',
+    host: '',
     port: 3306,
     dialect: 'mysql',
     sync: { force: true },
